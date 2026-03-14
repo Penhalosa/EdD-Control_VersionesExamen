@@ -13,15 +13,15 @@ public class Library {
     }
     
     public Book findBookByTitle(String title) {
-        // BUG 5: Sensible a mayúsculas/minúsculas
         for (Book book : books) {
-            if (book.getTitle().equals(title)) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
                 return book;
             }
         }
         return null;
     }
-    
+
+
     public Book findBookByIsbn(String isbn) {
     for (Book b : books) {
         if (b.getIsbn().equals(isbn)) {
