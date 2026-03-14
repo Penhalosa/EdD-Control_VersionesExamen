@@ -16,4 +16,15 @@ public class LibraryTests {
         // Esperado: solo 1 libro con ese ISBN
         assertEquals(1, lib.findAvailableBooks().size());
     }
+
+    @Test
+        public void testFindBookCaseInsensitive() {
+        Library lib = new Library();
+        lib.addBook(new Book("Clean Code", "Robert Martin", "978-0132350884"));
+
+        Book found = lib.findBookByIsbn("clean code"); // distinto casing
+
+        // Debug aquí para ver comparación
+        assertNotNull(found); // debería encontrarlo
+    }
 }
