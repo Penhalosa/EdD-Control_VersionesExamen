@@ -18,7 +18,10 @@ public class Book {
     // Faltan getIsbn() y isAvailable()
     
     public void borrow() {
-        // BUG 2: No valida si ya está prestado
+        if (!available) {
+            System.out.println("ERROR: El libro ya está prestado");
+            return;
+        }
         available = false;
     }
     
