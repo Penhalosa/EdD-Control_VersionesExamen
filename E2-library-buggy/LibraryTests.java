@@ -1,0 +1,19 @@
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+
+public class LibraryTests {
+    @Test
+    public void testAddDuplicateBook() {
+        Library lib = new Library();
+        Book b1 = new Book("Clean Code", "Robert Martin", "978-0132350884");
+        Book b2 = new Book("Clean Code", "Robert Martin", "978-0132350884"); // duplicado
+
+        lib.addBook(b1);
+        lib.addBook(b2); // debería impedirse
+
+        // Debug aquí para ver el estado interno
+        // Esperado: solo 1 libro con ese ISBN
+        assertEquals(1, lib.findAvailableBooks().size());
+    }
+}

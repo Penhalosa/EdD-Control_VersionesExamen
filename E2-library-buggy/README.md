@@ -31,6 +31,7 @@ Para cada bug, incluir en el PR:
 - [ ] Código del test que lo reproduce
 
 ## Estructura del repositorio
+```bash
 /E2-library-buggy/
 ├── README.md
 ├── .gitignore      # Archivos a ignorar (localizado en un directorio superior) 
@@ -39,3 +40,4 @@ Para cada bug, incluir en el PR:
 ├── Library.java
 ├── E2-Full_Stack_Developer-Debug+Git.pdf
 └── /documentacion/    # Para las capturas de pantalla, entre otras las del debugger
+```
