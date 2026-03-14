@@ -1,6 +1,8 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 
 public class LibraryTests {
     @Test
@@ -47,4 +49,21 @@ public class LibraryTests {
         // Debug aquí para ver el estado interno
         assertTrue(book.isAvailable());
     }
+    @Test
+        public void testFindAvailableBooks() {
+        Library lib = new Library();
+        Book b1 = new Book("Clean Code", "Robert Martin", "978-0132350884");
+        Book b2 = new Book("Design Patterns", "Gamma", "978-0201633610");
+
+        lib.addBook(b1);
+        lib.addBook(b2);
+
+        b1.borrow(); // este NO debería aparecer como disponible
+
+        // Debug aquí para ver el estado interno
+        List<Book> available = lib.findAvailableBooks();
+
+        assertEquals(1, available.size()); // debería haber solo 1 disponible
+    }
+
 }
