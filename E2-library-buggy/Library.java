@@ -42,4 +42,13 @@ public class Library {
 }
     
     // BUG 8: Falta método para quitar libros
+    public boolean removeBook(String isbn) {
+    Book found = findBookByIsbn(isbn);
+    if (found != null) {
+        books.remove(found);
+        return true;
+    }
+    return false;
+}
+
 }
