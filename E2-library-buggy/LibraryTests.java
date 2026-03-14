@@ -27,4 +27,14 @@ public class LibraryTests {
         // Debug aquí para ver comparación
         assertNotNull(found); // debería encontrarlo
     }
+    @Test
+        public void testBorrowAlreadyBorrowed() {
+        Book book = new Book("Clean Code", "Robert Martin", "978-0132350884");
+
+        book.borrow(); // primera vez
+        book.borrow(); // segunda vez → debería impedirse
+
+        // Debug aquí para ver el estado interno
+        assertFalse(book.isAvailable()); // debería seguir prestado
+    }
 }
