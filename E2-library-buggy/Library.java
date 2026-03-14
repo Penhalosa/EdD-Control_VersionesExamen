@@ -5,8 +5,11 @@ public class Library {
     private List<Book> books = new ArrayList<>();
     
     public void addBook(Book book) {
-        // BUG 4: Permite libros duplicados (mismo ISBN)
-        books.add(book);
+    if (findBookByIsbn(book.getIsbn()) != null) {
+        System.out.println("ERROR: Libro duplicado por ISBN");
+        return;
+    }
+    books.add(book);
     }
     
     public Book findBookByTitle(String title) {
@@ -18,6 +21,15 @@ public class Library {
         }
         return null;
     }
+    
+    public Book findBookByIsbn(String isbn) {
+    for (Book b : books) {
+        if (b.getIsbn().equals(isbn)) {
+            return b;
+        }
+    }
+    return null;
+}
     
     public List<Book> findAvailableBooks() {
         List<Book> availableBooks = new ArrayList<>();
