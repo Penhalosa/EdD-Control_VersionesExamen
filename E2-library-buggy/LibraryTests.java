@@ -65,5 +65,18 @@ public class LibraryTests {
 
         assertEquals(1, available.size()); // debería haber solo 1 disponible
     }
+    @Test
+        public void testRemoveBookMissing() {
+        Library lib = new Library();
+        Book book = new Book("Clean Code", "Robert Martin", "978-0132350884");
+
+        lib.addBook(book);
+
+        // Debug aquí: no existe removeBook()
+        // Este test debe fallar al compilar
+        // lib.removeBook(b);
+
+        assertEquals(1, lib.findAvailableBooks().size());
+    }
 
 }
