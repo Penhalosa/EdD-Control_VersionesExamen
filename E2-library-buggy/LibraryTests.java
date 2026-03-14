@@ -37,4 +37,14 @@ public class LibraryTests {
         // Debug aquí para ver el estado interno
         assertFalse(book.isAvailable()); // debería seguir prestado
     }
+    @Test
+        public void testReturnAlreadyAvailable() {
+        Book book = new Book("Clean Code", "Robert Martin", "978-0132350884");
+
+        book.returnBook(); // ya está disponible
+        book.returnBook(); // segunda vez → debería impedirse
+
+        // Debug aquí para ver el estado interno
+        assertTrue(book.isAvailable());
+    }
 }
