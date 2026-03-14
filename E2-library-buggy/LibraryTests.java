@@ -78,5 +78,15 @@ public class LibraryTests {
 
         assertEquals(1, lib.findAvailableBooks().size());
     }
+    @Test
+    public void testMissingGetters() {
+    Book book = new Book("Clean Code", "Robert Martin", "978-0132350884");
+
+    // Debug aquí: estos métodos NO existen
+    // b.getIsbn();
+    // b.isAvailable();
+
+    assertNotNull(book.getTitle()); // único getter disponible
+    }
 
 }
