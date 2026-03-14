@@ -26,7 +26,10 @@ public class Book {
     }
     
     public void returnBook() {
-        // BUG 3: No valida si ya estaba disponible
+        if (available) {
+            System.out.println("ERROR: El libro ya está disponible");
+            return;
+        }
         available = true;
     }
 }
