@@ -14,6 +14,14 @@ public class NotificationManager {
                 System.out.println("Email enviado a " + recipient + ": " + message);
             }
         }
+    private class SMSService implements NotificationService {
+    private static final Logger LOGGER = Logger.getLogger(NotificationManager.class.getName());
+            @Override
+            public void send(String message, String recipient) {
+            LOGGER.info("Enviando SMS a " + recipient);
+            System.out.println("SMS enviado a " + recipient + ": " + message);
+        }
+    }
 
     public interface NotificationService {
         void send(String message, String recipient);
