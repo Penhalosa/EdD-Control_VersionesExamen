@@ -84,5 +84,5 @@ public class NotificationManager {
         }
 
         LOGGER.severe("No se pudo enviar la notificación tras " + maxRetries + " intentos");
-    }
+     }
 }
