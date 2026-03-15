@@ -1,10 +1,20 @@
 // NotificationManager.java - Código a refactorizar
+import java.util.logging.Logger;
+
 public class NotificationManager {
     // TODO: Separar en clases diferentes: EmailService, SMSService, PushService
     // TODO: Aplicar patrón Strategy para los tipos de notificación
     // TODO: Añadir sistema de logs
 
-    
+    private class EmailService implements NotificationService {
+    private static final Logger LOGGER = Logger.getLogger(NotificationManager.class.getName());
+            @Override
+            public void send(String message, String recipient) {
+                LOGGER.info("Enviando EMAIL a " + recipient);
+                System.out.println("Email enviado a " + recipient + ": " + message);
+            }
+        }
+
     public interface NotificationService {
         void send(String message, String recipient);
     }
