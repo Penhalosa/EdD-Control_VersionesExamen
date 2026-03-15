@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.logging.Logger;
 
 public class NotificationManager {
@@ -62,5 +63,26 @@ public class NotificationManager {
         if (type.equals("sms") && !recipient.matches("^\\+?[0-9]{7,15}$"))
             throw new IllegalArgumentException("Teléfono inválido");
     }
+    public void sendWithRetry(String type, String message, String recipient) {
 
+        validate(type, message, recipient);
+        NotificationService service = getService(type);
+
+        int maxRetries = 3;
+        int attempt = 0;
+
+        while (attempt < maxRetries) {
+            try {
+                LOGGER.info("Intento " + (attempt + 1) + " de envío");
+                service.send(message, recipient);
+                LOGGER.info("Notificación enviada correctamente");
+                return;
+            } catch (Exception e) {
+                attempt++;
+                LOGGER.warning("Error en el envío: " + e.getMessage());
+            }
+        }
+
+        LOGGER.severe("No se pudo enviar la notificación tras " + maxRetries + " intentos");
+    }
 }
