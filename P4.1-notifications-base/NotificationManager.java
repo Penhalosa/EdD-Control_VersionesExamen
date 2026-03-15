@@ -23,6 +23,15 @@ public class NotificationManager {
         }
     }
 
+    private class PushService implements NotificationService {
+    private static final Logger LOGGER = Logger.getLogger(NotificationManager.class.getName());
+            @Override
+            public void send(String message, String recipient) {
+                LOGGER.info("Enviando PUSH a " + recipient);
+                System.out.println("Push enviado a " + recipient + ": " + message);
+        }
+    }
+
     public interface NotificationService {
         void send(String message, String recipient);
     }
