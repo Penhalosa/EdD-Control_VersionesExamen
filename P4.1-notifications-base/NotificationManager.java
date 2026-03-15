@@ -45,4 +45,22 @@ public class NotificationManager {
         NotificationService service = getService(type);
         service.send(message, recipient);
     }
+
+    private void validate(String type, String message, String recipient) {
+        if (type == null || type.isBlank())
+            throw new IllegalArgumentException("Tipo vacío");
+
+        if (message == null || message.isBlank())
+            throw new IllegalArgumentException("Mensaje vacío");
+
+        if (recipient == null || recipient.isBlank())
+            throw new IllegalArgumentException("Destinatario vacío");
+
+        if (type.equals("email") && !recipient.contains("@"))
+            throw new IllegalArgumentException("Email inválido");
+
+        if (type.equals("sms") && !recipient.matches("^\\+?[0-9]{7,15}$"))
+            throw new IllegalArgumentException("Teléfono inválido");
+    }
+
 }
