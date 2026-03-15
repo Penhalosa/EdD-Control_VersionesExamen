@@ -3,6 +3,11 @@ public class NotificationManager {
     // TODO: Separar en clases diferentes: EmailService, SMSService, PushService
     // TODO: Aplicar patrón Strategy para los tipos de notificación
     // TODO: Añadir sistema de logs
+
+    
+    public interface NotificationService {
+        void send(String message, String recipient);
+    }
     
     public void send(String type, String message, String recipient) {
         if (type.equals("email")) {
