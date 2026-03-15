@@ -39,7 +39,7 @@ public class NotificationManager {
             case "push": return new PushService();
             default: throw new IllegalArgumentException("Tipo no válido: " + type);
         }
-    }
+}
 
     public void send(String type, String message, String recipient) {
         NotificationService service = getService(type);
